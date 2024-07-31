@@ -1,23 +1,32 @@
 # COVID-19_India_Analysis_with_Python
 
-# Introduction
+# Table of content
+- Introduction
+- Objective
+- Tools and Technologies
+- Data Import and Cleaning
+- Data Transformation
+- Analysis and Visualizations
+- Project Insights
+
+# Introduction :
 The COVID-19 pandemic has affected every corner of the world, and India has been one of the countries significantly impacted. Analyzing COVID-19 data can provide crucial insights into the spread of the virus, the effectiveness of measures taken, and help in planning future responses. This project aims to analyze and visualize COVID-19 data in India using Python. The project involves data cleaning, transformation, and analysis to derive meaningful insights and trends.
 
-# Objectives
+# Objectives  :
 - To analyze the spread of COVID-19 across different states in India.
 - To visualize the trends in confirmed cases, recoveries, and deaths.
 - To identify the states with the highest and lowest vaccination rates.
 - To compare vaccination rates between males and females.
 - To provide a comprehensive dashboard to track COVID-19 metrics.
 
-# Tools and Technologies
+# Tools and Technologies :
 - Python: For data analysis and visualization.
 - Pandas: For data manipulation and cleaning.
 - Matplotlib and Seaborn: For creating visualizations.
 - Plotly: For interactive visualizations.
 - Jupyter Notebook: For coding and documentation.
 
-# Data Import and Cleaning
+# Data Import and Cleaning :
 The initial step involves importing the data into Python using Pandas. The data is then cleaned to handle missing values, incorrect data formats, and any inconsistencies. Date columns are converted to datetime format, and relevant columns are extracted for analysis.
 ```
 # Importing dataset
@@ -26,7 +35,7 @@ covid_df = pd.read_csv('covid_data.csv')
 vaccine_df = pd.read_csv('vaccine_data.csv')
 ```
 
-# Data Transformation
+# Data Transformation :
 - To facilitate analysis, additional columns are created. For instance, the 'Active_cases' column is calculated as the difference between confirmed cases and the sum of recoveries and deaths.
 ```
 covid_df['Active_cases'] = covid_df['Confirmed'] - (covid_df['Cured'] + covid_df['Deaths'])
@@ -42,7 +51,7 @@ Statewise['Recovery_rate'] = (Statewise['Cured'] * 100) / Statewise['Confirmed']
 Statewise['Mortality_rate'] = (Statewise['Deaths'] * 100) / Statewise['Confirmed']
 ```
 
-# Analysis and Visualizations
+# Analysis and Visualizations :
 1. Top 10 States with Most Active Cases
    This analysis identifies the states with the highest number of active COVID-19 cases in India.
    ```

@@ -28,28 +28,28 @@ The COVID-19 pandemic has affected every corner of the world, and India has been
 
 # Data Import and Cleaning :
 The initial step involves importing the data into Python using Pandas. The data is then cleaned to handle missing values, incorrect data formats, and any inconsistencies. Date columns are converted to datetime format, and relevant columns are extracted for analysis.
-```
-# Importing dataset
+   ```
+   # Importing dataset
 
-covid_df = pd.read_csv('covid_data.csv')
-vaccine_df = pd.read_csv('vaccine_data.csv')
-```
+   covid_df = pd.read_csv('covid_data.csv')
+   vaccine_df = pd.read_csv('vaccine_data.csv')
+   ```
 
 # Data Transformation :
 - To facilitate analysis, additional columns are created. For instance, the 'Active_cases' column is calculated as the difference between confirmed cases and the sum of recoveries and deaths.
-```
-covid_df['Active_cases'] = covid_df['Confirmed'] - (covid_df['Cured'] + covid_df['Deaths'])
-```
+   ```
+   covid_df['Active_cases'] = covid_df['Confirmed'] - (covid_df['Cured'] + covid_df['Deaths'])
+   ```
 - For instance, the pivot table is created to summarize the data by State/UnionTerritory using the maximum values of Cured, Deaths, and Confirmed cases. Then calculates the recovery and mortality rates.
-```
-# Create pivot table
-Statewise = pd.pivot_table(covid_df, values=['Cured', 'Deaths', 'Confirmed'], index='State/UnionTerritory', aggfunc=max)
-```
-```
-# Calculate recovery and mortality rates
-Statewise['Recovery_rate'] = (Statewise['Cured'] * 100) / Statewise['Confirmed']
-Statewise['Mortality_rate'] = (Statewise['Deaths'] * 100) / Statewise['Confirmed']
-```
+   ```
+   # Create pivot table
+   Statewise = pd.pivot_table(covid_df, values=['Cured', 'Deaths', 'Confirmed'], index='State/UnionTerritory', aggfunc=max)
+   ```
+   ```
+   # Calculate recovery and mortality rates
+   Statewise['Recovery_rate'] = (Statewise['Cured'] * 100) / Statewise['Confirmed']
+   Statewise['Mortality_rate'] = (Statewise['Deaths'] * 100) / Statewise['Confirmed']
+   ```
 
 # Analysis and Visualizations :
 1. Top 10 States with Most Active Cases
@@ -97,13 +97,13 @@ Statewise['Mortality_rate'] = (Statewise['Deaths'] * 100) / Statewise['Confirmed
 
 4. Vaccination Analysis
    Male vs Female Vaccination: A pie chart comparing the vaccination numbers between males and females.
-  ```
-  male_vaccinated = vaccine_df['Male(Individuals Vaccinated)'].sum()
-  female_vaccinated = vaccine_df['Female(Individuals Vaccinated)'].sum()
+   ```
+   male_vaccinated = vaccine_df['Male(Individuals Vaccinated)'].sum()
+   female_vaccinated = vaccine_df['Female(Individuals Vaccinated)'].sum()
 
-  fig = px.pie(names=['Male', 'Female'], values=[male_vaccinated, female_vaccinated], title='Male vs Female Vaccination')
-  fig.show()
-  ```
+   fig = px.pie(names=['Male', 'Female'], values=[male_vaccinated, female_vaccinated], title='Male vs Female Vaccination')
+   fig.show()
+   ```
 
 5. Top 10 Vaccinated States
    A bar chart showing the top 10 states with the highest number of vaccinations.
